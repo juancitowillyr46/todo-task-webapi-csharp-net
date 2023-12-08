@@ -10,5 +10,7 @@ namespace TodoTask.Domain.Ports.Outbound
     public interface IRequestRepository
     {
         RequestModel CreateRequest(RequestModel requestModel);
+
+        bool UpdateRequest(int requestId, RequestModel requestModel);
     }
 }

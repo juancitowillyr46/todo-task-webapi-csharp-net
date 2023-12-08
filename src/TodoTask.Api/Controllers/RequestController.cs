@@ -1,15 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using TodoTask.Application.Dtos;
+using TodoTask.Application.Dtos.Request;
 using TodoTask.Domain.Models;
 using TodoTask.Domain.Ports.Inbound;
-using TodoTask.Infrastructure.Dtos;
 
 namespace TodoTask.Api.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class RequestController : ControllerBase
+    public class RequestController : BaseController
     {
         private readonly IRequestService _requestService;
         private readonly IMapper _mapper;
@@ -27,6 +24,14 @@ namespace TodoTask.Api.Controllers
             RequestModel model = _requestService.CreateRequest(toModel);
             GetRequestDto getRequestDto = _mapper.Map<GetRequestDto>(model);
             return getRequestDto;
+        }
+
+        [HttpPut("{requestId}")]
+        public bool Put(int requestId, [FromBody] UpdateRequestDto updateRequestDto)
+        {
+            RequestModel toModel = _mapper.Map<RequestModel>(updateRequestDto);
+            bool done = _requestService.UpdateRequest(requestId, toModel);
+            return done;
         }
     }
 }

@@ -4,9 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TodoTask.Application.Dtos;
+using TodoTask.Application.Dtos.Request;
 using TodoTask.Domain.Models;
-using TodoTask.Infrastructure.Dtos;
 using TodoTask.Infrastructure.Persistence.Entities;
 
 namespace TodoTask.Infrastructure.Mappers
@@ -20,6 +19,7 @@ namespace TodoTask.Infrastructure.Mappers
             CreateMap<RequestModel, RequestEntity>();
             CreateMap<RequestModel, GetRequestDto>();
             CreateMap<RequestEntity, RequestModel>();
+            CreateMap<UpdateRequestDto, RequestModel>();
         }
     }
 }

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using TodoTask.Domain.Models;
 using TodoTask.Domain.Ports.Inbound;
 using TodoTask.Domain.Ports.Outbound;
-using TodoTask.Infrastructure.Dtos;
 
 namespace TodoTask.Application.Services
 {
@@ -22,6 +21,12 @@ namespace TodoTask.Application.Services
         public RequestModel CreateRequest(RequestModel requestModel)
         {
             return _requestRepository.CreateRequest(requestModel);
+        }
+
+        public bool UpdateRequest(int requestId, RequestModel requestModel)
+        {
+            requestModel.AssetId = requestModel.AssetId;
+            return _requestRepository.UpdateRequest(requestId, requestModel);
         }
     }
 }

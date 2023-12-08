@@ -7,9 +7,9 @@ using TodoTask.Domain.Models;
 
 namespace TodoTask.Domain.Ports.Inbound
 {
-    public interface IRequestService
+    public interface IAssetService
     {
-        RequestModel CreateRequest(RequestModel requestModel);
-        bool UpdateRequest(int requestId, RequestModel requestModel);
+        List<AssetModel> FindAssetAvailability();
+        bool UpdateAssetAvailability(int assetId, bool availability);
     }
 }

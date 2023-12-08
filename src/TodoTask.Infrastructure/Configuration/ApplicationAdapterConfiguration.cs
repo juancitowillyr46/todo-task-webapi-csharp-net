@@ -15,6 +15,7 @@ namespace TodoTask.Application.Configuration
         public static IServiceCollection AddApplicationAdapters(this IServiceCollection services)
         {
             // DI
+            services.AddScoped<IAssetService, AssetService>();
             services.AddScoped<IRequestService, RequestService>();
             return services;
         }

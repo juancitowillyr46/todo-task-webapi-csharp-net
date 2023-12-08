@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TodoTask.Application.Dtos;
+using TodoTask.Application.Dtos.Request;
 using TodoTask.Infrastructure.Persistence.Entities;
 
 namespace TodoTask.Infrastructure.Mappers

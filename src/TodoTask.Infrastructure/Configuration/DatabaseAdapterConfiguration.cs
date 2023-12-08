@@ -21,6 +21,7 @@ namespace TodoTask.Infrastructure.Configuration
             //services.AddTransient<IPandaPersistencePort, PandaPersistenceAdapter>();
 
             // Persistence
+            services.AddScoped<IAssetRepository, AssetRepository>();
             services.AddScoped<IRequestRepository, RequestRepository>();
             return services;
         }

@@ -29,5 +29,18 @@ namespace TodoTask.Infrastructure.Persistence.Repositories
             _dbContext.SaveChanges();
             return _mapper.Map<RequestModel>(requestEntity);
         }
+
+        public bool UpdateRequest(int requestId, RequestModel requestModel)
+        {
+            RequestEntity? requestEntity = _dbContext.Requests?.Find(requestId);
+            if (requestEntity != null)
+            {
+                requestEntity.AssetId = requestModel.AssetId;
+                requestEntity.UpdatedBy = requestModel.UpdatedBy;
+                requestEntity.UpdatedAt = requestModel.UpdatedAt;
+                _dbContext.SaveChanges();
+            }
+            return requestEntity != null;
+        }
     }
 }

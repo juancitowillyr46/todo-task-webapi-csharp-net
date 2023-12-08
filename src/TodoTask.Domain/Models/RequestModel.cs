@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TodoTask.Domain.Enums;
+using TodoTask.Domain.Models.Base;
 
 namespace TodoTask.Domain.Models
 {
-    public class RequestModel
+    public class RequestModel : BaseModel
     {
-        public int Id { get; set; }
         public decimal OriginLatitude { get; set; }
         public decimal OriginLongitude { get; set; }
         public decimal DestinationLatitude { get; set; }
