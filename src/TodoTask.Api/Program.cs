@@ -8,6 +8,7 @@ using TodoTask.Infrastructure.Persistence.Database;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
+using TodoTask.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,10 +26,13 @@ builder.Services.AddMvc().AddNewtonsoftJson(s => {
 
 
 builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddServiceSwaggerGen();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDatabase(connectionString);
 builder.Services.AddApplicationAdapters();
+builder.Services.AddAuthentication(builder.Configuration);
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -40,6 +44,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

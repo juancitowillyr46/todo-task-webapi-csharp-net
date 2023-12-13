@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TodoTask.Application.Dtos.Asset;
@@ -9,6 +10,7 @@ using TodoTask.Domain.Ports.Inbound;
 
 namespace TodoTask.Api.Controllers
 {
+    [Authorize]
     public class AssetController : BaseController
     {
         private readonly IAssetService _assetService;
