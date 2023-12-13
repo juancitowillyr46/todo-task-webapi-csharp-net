@@ -16,8 +16,10 @@ namespace TodoTask.Infrastructure.Persistence.Entities
         public AssetEntity? Asset { get; set; }
         public decimal OriginLatitude { get; set; }
         public decimal OriginLongitude { get; set; }
+        public string? OriginAddress { get; set; }
         public decimal DestinationLatitude { get; set; }
         public decimal DestinationLongitude { get; set; }
+        public string? DestinationAddress { get; set; }
         public RequestStatus Status { get; set; }
     }
 }

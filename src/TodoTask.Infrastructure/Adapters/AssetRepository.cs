@@ -10,7 +10,7 @@ using TodoTask.Domain.Ports.Outbound;
 using TodoTask.Infrastructure.Persistence.Database;
 using TodoTask.Infrastructure.Persistence.Entities;
 
-namespace TodoTask.Infrastructure.Persistence.Repositories
+namespace TodoTask.Infrastructure.Adapters
 {
     public class AssetRepository : IAssetRepository
     {

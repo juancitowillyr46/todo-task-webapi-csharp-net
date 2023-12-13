@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TodoTask.Application.Dtos.Asset;
+using TodoTask.Application.Exceptions;
 using TodoTask.Application.Services;
 using TodoTask.Domain.Models;
 using TodoTask.Domain.Ports.Inbound;

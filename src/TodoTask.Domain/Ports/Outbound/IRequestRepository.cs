@@ -12,5 +12,8 @@ namespace TodoTask.Domain.Ports.Outbound
         RequestModel CreateRequest(RequestModel requestModel);
 
         bool UpdateRequest(int requestId, RequestModel requestModel);
+
+        bool FindAwaitingRequestsByUser(int userId);
+
     }
 }

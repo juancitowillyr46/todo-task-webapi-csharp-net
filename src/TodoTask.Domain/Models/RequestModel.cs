@@ -12,8 +12,10 @@ namespace TodoTask.Domain.Models
     {
         public decimal OriginLatitude { get; set; }
         public decimal OriginLongitude { get; set; }
+        public string? OriginAddress { get; set; }
         public decimal DestinationLatitude { get; set; }
         public decimal DestinationLongitude { get; set; }
+        public string? DestinationAddress { get; set; }
         public int UserId { get; set; }
         public int? AssetId { get; set; }
         public RequestStatus Status { get; set; }

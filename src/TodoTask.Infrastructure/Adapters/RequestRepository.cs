@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TodoTask.Domain.Enums;
 using TodoTask.Domain.Models;
 using TodoTask.Domain.Ports.Outbound;
 using TodoTask.Infrastructure.Persistence.Database;
 using TodoTask.Infrastructure.Persistence.Entities;
 
-namespace TodoTask.Infrastructure.Persistence.Repositories
+namespace TodoTask.Infrastructure.Adapters
 {
     public class RequestRepository : IRequestRepository
     {
@@ -28,6 +29,12 @@ namespace TodoTask.Infrastructure.Persistence.Repositories
             _dbContext.Requests?.Add(requestEntity);
             _dbContext.SaveChanges();
             return _mapper.Map<RequestModel>(requestEntity);
+        }
+
+        public bool FindAwaitingRequestsByUser(int userId)
+        {
+            int? count = _dbContext?.Requests?.Where(c => c.UserId == userId && c.Status == RequestStatus.PENDING).Count();
+            return (count > 0);
         }
 
         public bool UpdateRequest(int requestId, RequestModel requestModel)

@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TodoTask.Application.Services;
 using TodoTask.Domain.Ports.Inbound;
-using TodoTask.Infrastructure.Persistence.Repositories;
 
 namespace TodoTask.Application.Configuration
 {
