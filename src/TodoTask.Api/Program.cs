@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using TodoTask.Infrastructure.Extensions;
+using TodoTask.Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,14 +27,15 @@ builder.Services.AddMvc().AddNewtonsoftJson(s => {
 
 
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddServiceSwaggerGen();
-builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddDatabase(connectionString);
-builder.Services.AddApplicationAdapters();
-builder.Services.AddAuthentication(builder.Configuration);
 builder.Services.AddAuthorization();
 
+// Add Extensions
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddExtensionSwaggerGen();
+builder.Services.AddExtensionDatabaseConfig(connectionString);
+builder.Services.AddExtensionApplicationAdapters();
+builder.Services.AddExtenstionAuthentication(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -52,5 +54,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UseErrorHandlerMiddleware();
+app.UseMiddleware<JwtMiddleware>();
 
 app.Run();

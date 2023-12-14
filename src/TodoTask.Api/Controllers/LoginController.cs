@@ -26,8 +26,8 @@ namespace TodoTask.Api.Controllers
             {
                 var issuer = _config["Jwt:Issuer"];
                 var audience = _config["Jwt:Audience"];
-                //var key = Encoding.UTF8.GetBytes(_config["Jwt:SecretKey"]);
-                var key = Encoding.ASCII.GetBytes(_config["Jwt:SecretKey"]);
+                var key = Encoding.UTF8.GetBytes(_config["Jwt:SecretKey"]);
+                //var key = Encoding.ASCII.GetBytes(_config["Jwt:SecretKey"]);
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new[]
@@ -38,12 +38,10 @@ namespace TodoTask.Api.Controllers
                         new Claim(JwtRegisteredClaimNames.Jti,
                         Guid.NewGuid().ToString())
                     }),
-                    Expires = DateTime.UtcNow.AddMinutes(5),
+                    Expires = DateTime.UtcNow.AddMinutes(60),
                     Issuer = issuer,
                     Audience = audience,
-                    SigningCredentials = new SigningCredentials
-                    (new SymmetricSecurityKey(key),
-                    SecurityAlgorithms.HmacSha512Signature)
+                    SigningCredentials = new SigningCredentials (new SymmetricSecurityKey(key),SecurityAlgorithms.HmacSha512Signature),
                 };
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var token = tokenHandler.CreateToken(tokenDescriptor);

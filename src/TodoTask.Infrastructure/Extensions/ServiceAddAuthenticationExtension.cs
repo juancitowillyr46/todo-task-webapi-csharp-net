@@ -12,7 +12,7 @@ namespace TodoTask.Infrastructure.Extensions
 {
     public static class ServiceAddAuthenticationExtension
     {
-        public static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddExtenstionAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddAuthentication(options =>
             {

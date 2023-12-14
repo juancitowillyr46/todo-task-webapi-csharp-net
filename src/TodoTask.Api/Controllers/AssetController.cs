@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,10 +25,21 @@ namespace TodoTask.Api.Controllers
 
         [HttpGet("availability")]
         public List<GetAssetDto> GetAvailability()
+        //public IActionResult GetAvailability()
         {
+            var httpContext = HttpContext;
+            //var getUserIdContext = new Object();
+            //var userId = String.Empty;
+            if (httpContext.Items.TryGetValue("UserId", out var userId))
+            {
+                // Haz algo con el ID del usuario
+                //return Ok($"ID del Usuario: {userId}");
+                //getUserIdContext = userId;
+            }
             List<AssetModel> assetsModel = _assetService.FindAssetAvailability();
             var destinationList = _mapper.Map<List<GetAssetDto>>(assetsModel);
             return destinationList;
+            //Ok(userId);
         }
 
         [HttpPut("availability/{assetId}")]

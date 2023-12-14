@@ -11,7 +11,7 @@ namespace TodoTask.Application.Configuration
 {
     public static class ApplicationAdapterConfiguration
     {
-        public static IServiceCollection AddApplicationAdapters(this IServiceCollection services)
+        public static IServiceCollection AddExtensionApplicationAdapters(this IServiceCollection services)
         {
             // DI
             services.AddScoped<IAssetService, AssetService>();

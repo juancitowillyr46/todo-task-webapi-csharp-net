@@ -14,7 +14,7 @@ namespace TodoTask.Infrastructure.Configuration
 {
     public static class DatabaseAdapterConfiguration
     {
-        public static IServiceCollection AddDatabase(this IServiceCollection services, string databaseConnection)
+        public static IServiceCollection AddExtensionDatabaseConfig(this IServiceCollection services, string databaseConnection)
         {
             services.AddDbContext<TodoTaskDbContext>(options => options.UseSqlServer(databaseConnection));
             //services.AddHostedService<MigratorHostedService>();
