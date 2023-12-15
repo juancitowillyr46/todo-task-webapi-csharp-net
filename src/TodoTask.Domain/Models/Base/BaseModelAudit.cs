@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TodoTask.Domain.Models.Base
 {
-    public class BaseModelAudit
+    public abstract class BaseModelAudit
     {
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public int? CreatedBy { get; set; }

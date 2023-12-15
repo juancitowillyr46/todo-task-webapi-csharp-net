@@ -23,6 +23,7 @@ namespace TodoTask.Infrastructure.Configuration
             // Persistence
             services.AddScoped<IAssetRepository, AssetRepository>();
             services.AddScoped<IRequestRepository, RequestRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
     }

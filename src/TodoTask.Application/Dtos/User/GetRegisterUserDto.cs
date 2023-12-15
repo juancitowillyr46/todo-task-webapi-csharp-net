@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TodoTask.Domain.Models.Base
+namespace TodoTask.Application.Dtos.User
 {
-    public abstract class BaseModel : BaseModelAudit
+    public class GetRegisterUserDto
     {
         public int Id { get; set; }
+        public string UserName { get; set; } = string.Empty;
     }
 }

@@ -129,5 +129,6 @@ namespace TodoTask.Infrastructure.Persistence.Database
         public DbSet<AssetLocationEntity>? AssetLocations { get; set; }
         public DbSet<ClientLocationEntity>? ClientLocations { get; set; }
         public DbSet<ClientEntity>? Clients { get; set; }
+
     }
 }

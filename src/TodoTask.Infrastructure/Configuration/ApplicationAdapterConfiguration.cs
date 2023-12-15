@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TodoTask.Application.Services;
 using TodoTask.Domain.Ports.Inbound;
+using TodoTask.Infrastructure.Services;
 
 namespace TodoTask.Application.Configuration
 {
@@ -16,6 +17,11 @@ namespace TodoTask.Application.Configuration
             // DI
             services.AddScoped<IAssetService, AssetService>();
             services.AddScoped<IRequestService, RequestService>();
+
+            services.AddScoped<IJwtService, JwtService>();
+            services.AddScoped<ISecurityService, SecurityService>();
+            services.AddScoped<IPasswordEncryptionService, PasswordEncryptionService>();
+            
             return services;
         }
     }
