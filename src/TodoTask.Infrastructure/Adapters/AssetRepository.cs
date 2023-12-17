@@ -25,21 +25,24 @@ namespace TodoTask.Infrastructure.Adapters
 
         public List<AssetModel> FindAssetAvailability()
         {
-            List<AssetEntity>? assetEntities = _dbContext?.Assets?
-                                                            .Where(c => c.Availability == true).ToList();
+            List<AssetEntity>? assetEntities = new();
+            // _dbContext?.Assets?
+            //.Where(c => c.Availability == true).ToList()
             var destinationList = _mapper.Map<List<AssetModel>>(assetEntities);
             return destinationList;
         }
 
         public AssetModel FindAssetById(int assetId)
         {
-            AssetEntity? assetEntity = _dbContext.Assets?.Find(assetId);
+            AssetEntity? assetEntity = new();
+            // _dbContext.Assets?.Find(assetId)
             return _mapper.Map<AssetModel>(assetEntity);
         }
 
         public bool UpdateAssetAvailability(int assetId, AssetModel assetModel)
         {
-            AssetEntity? assetEntity = _dbContext.Assets?.Find(assetId);
+            AssetEntity? assetEntity = new();
+            // AssetEntity? assetEntity = _dbContext.Assets?.Find(assetId);
             if (assetEntity != null)
             {
                 assetEntity.Availability = assetModel.Availability;

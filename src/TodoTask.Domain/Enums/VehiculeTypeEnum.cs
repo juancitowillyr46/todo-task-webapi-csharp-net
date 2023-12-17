@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace TodoTask.Domain.Enums
 {
-    public enum RequestStatus
+    public enum VehiculeTypeEnum
     {
-        PENDING = 0,
-        ACCEPTED = 1,
-        ON_ROUTE = 2,
-        COMPLETED = 3
+        AUTO = 1,
+        TRUCK = 2,
     }
 }

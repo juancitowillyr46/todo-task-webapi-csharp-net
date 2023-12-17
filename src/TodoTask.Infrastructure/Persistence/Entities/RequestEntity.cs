@@ -10,16 +10,16 @@ namespace TodoTask.Infrastructure.Persistence.Entities
 {
     public class RequestEntity : BaseEntity
     {
-        public int UserId { get; set; }
-        public UserEntity? User { get; set; }
-        public int? AssetId { get; set; } = null;
-        public AssetEntity? Asset { get; set; }
+        public int ClientId { get; set; }
+        public ClientEntity? Client { get; set; }
+        public int? DriverId { get; set; } = null;
+        public DriverEntity? Driver { get; set; }
         public decimal OriginLatitude { get; set; }
         public decimal OriginLongitude { get; set; }
         public string? OriginAddress { get; set; }
         public decimal DestinationLatitude { get; set; }
         public decimal DestinationLongitude { get; set; }
         public string? DestinationAddress { get; set; }
-        public RequestStatus Status { get; set; }
+        public RequestStatusEnum? Status { get; set; } = RequestStatusEnum.PENDING;
     }
 }

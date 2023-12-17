@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TodoTask.Infrastructure.Persistence.Database;
 
@@ -11,9 +12,10 @@ using TodoTask.Infrastructure.Persistence.Database;
 namespace TodoTask.Infrastructure.Migrations
 {
     [DbContext(typeof(TodoTaskDbContext))]
-    partial class TodoTaskDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231217044115_UpdateNewModelMigraton")]
+    partial class UpdateNewModelMigraton
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -326,7 +328,7 @@ namespace TodoTask.Infrastructure.Migrations
                     b.Property<decimal>("DestinationLongitude")
                         .HasColumnType("decimal(18,6)");
 
-                    b.Property<int?>("DriverId")
+                    b.Property<int>("DriverId")
                         .HasColumnType("int");
 
                     b.Property<string>("OriginAddress")
@@ -523,7 +525,8 @@ namespace TodoTask.Infrastructure.Migrations
                     b.HasOne("TodoTask.Infrastructure.Persistence.Entities.DriverEntity", "Driver")
                         .WithMany("Requests")
                         .HasForeignKey("DriverId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Client");
 

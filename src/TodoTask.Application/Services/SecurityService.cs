@@ -24,16 +24,11 @@ namespace TodoTask.Application.Services
         }
         public string PostLogin(string username, string password)
         {
-            UserModel userModel = _userRepository.GetUserByUsername(username);
-            if (userModel == null)
-            {
-                throw new NotFoundException("User not exist");
-            }
-
+            UserModel userModel = _userRepository.GetUserByUsername(username) ?? throw new NotFoundException("Valid: User not exist");
             bool verifyPassword = _passwordEncryptionService.VerifyPassword(password, userModel.Password!);
             if(!verifyPassword)
             {
-                throw new NotFoundException("Password Incorrect");
+                throw new NotFoundException("Valid: Password Incorrect");
             }
 
             string jwtToken = _jwtService.GetJwt(userModel);
@@ -42,6 +37,10 @@ namespace TodoTask.Application.Services
 
         public UserModel PostRegister(UserModel userModel)
         {
+            if(_userRepository.GetUserByUsername(userModel.UserName!) != null)
+            {
+                throw new NotFoundException("User exist");
+            }
             string encryptPassword = _passwordEncryptionService.EncryptPassword(userModel.Password!);
             userModel.Password = encryptPassword;
             return _userRepository.CreateUser(userModel);

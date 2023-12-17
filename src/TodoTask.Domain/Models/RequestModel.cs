@@ -18,6 +18,6 @@ namespace TodoTask.Domain.Models
         public string? DestinationAddress { get; set; }
         public int UserId { get; set; }
         public int? AssetId { get; set; }
-        public RequestStatus Status { get; set; }
+        public RequestStatusEnum Status { get; set; }
     }
 }

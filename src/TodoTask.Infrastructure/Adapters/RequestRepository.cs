@@ -33,7 +33,8 @@ namespace TodoTask.Infrastructure.Adapters
 
         public bool FindAwaitingRequestsByUser(int userId)
         {
-            int? count = _dbContext?.Requests?.Where(c => c.UserId == userId && c.Status == RequestStatus.PENDING).Count();
+            //int? count = _dbContext?.Requests?.Where(c => c.UserId == userId && c.Status == RequestStatusEnum.PENDING).Count();
+            int? count = 0;
             return (count > 0);
         }
 
@@ -42,7 +43,7 @@ namespace TodoTask.Infrastructure.Adapters
             RequestEntity? requestEntity = _dbContext.Requests?.Find(requestId);
             if (requestEntity != null)
             {
-                requestEntity.AssetId = requestModel.AssetId;
+                //requestEntity.AssetId = requestModel.AssetId;
                 requestEntity.UpdatedBy = requestModel.UpdatedBy;
                 requestEntity.UpdatedAt = requestModel.UpdatedAt;
                 _dbContext.SaveChanges();
