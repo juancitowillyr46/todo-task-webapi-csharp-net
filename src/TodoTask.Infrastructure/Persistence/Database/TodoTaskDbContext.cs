@@ -58,15 +58,15 @@ namespace TodoTask.Infrastructure.Persistence.Database
                         .Property(e => e.Longitude)
                         .HasColumnType("decimal(18, 6)");
 
-            //modelBuilder.Entity<ClientLocationEntity>().HasData(
-            //    new ClientLocationEntity
-            //    {
-            //        Id = 1,
-            //        ClientId = 1,
-            //        Latitude = -1,
-            //        Longitude = -2,
-            //    }
-            //);
+            modelBuilder.Entity<ClientLocationEntity>().HasData(
+                new ClientLocationEntity
+                {
+                    Id = 1,
+                    ClientId = 1,
+                    Latitude = -1,
+                    Longitude = -2,
+                }
+            );
 
         }
         private static void ConfigureDriverLocation(ModelBuilder modelBuilder)
@@ -79,15 +79,15 @@ namespace TodoTask.Infrastructure.Persistence.Database
                         .Property(e => e.Longitude)
                         .HasColumnType("decimal(18, 6)");
 
-            //modelBuilder.Entity<DriverLocationEntity>().HasData(
-            //                new DriverLocationEntity
-            //                {
-            //                    Id = 1,
-            //                    DriverId = 1,
-            //                    Latitude = -1,
-            //                    Longitude = -2,
-            //                }
-            //            );
+            modelBuilder.Entity<DriverLocationEntity>().HasData(
+                            new DriverLocationEntity
+                            {
+                                Id = 1,
+                                DriverId = 1,
+                                Latitude = -1,
+                                Longitude = -2,
+                            }
+                        );
         }
         private static void ConfigureDriver(ModelBuilder modelBuilder)
         {
@@ -105,31 +105,32 @@ namespace TodoTask.Infrastructure.Persistence.Database
                         .HasMany(a => a.Locations)
                         .WithOne(b => b.Driver)
                         .HasForeignKey(b => b.DriverId)
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<DriverEntity>()
                         .HasMany(a => a.Requests)
                         .WithOne(b => b.Driver)
                         .HasForeignKey(b => b.DriverId)
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
-            //modelBuilder.Entity<DriverEntity>().HasData(
-            //                new DriverEntity
-            //                {
-            //                    Id = 1,
-            //                    UserId = 1,
-            //                    PersonId = 1,
-            //                }
-            //            );
+            modelBuilder.Entity<DriverEntity>()
+                        .HasOne(d => d.Vehicle)
+                        .WithOne(v => v.Driver)
+                        .HasForeignKey<VehicleEntity>(v => v.DriverId)
+                        .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<DriverEntity>().HasData(
+                            new DriverEntity
+                            {
+                                Id = 1,
+                                UserId = 1,
+                                PersonId = 1,
+                            }
+                        );
 
         }
         private static void ConfigureClient(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ClientEntity>()
-                        .HasOne(c => c.User)
-                        .WithOne()
-                        .HasForeignKey<ClientEntity>(c => c.UserId);
-
             modelBuilder.Entity<ClientEntity>()
                         .HasOne(c => c.User)
                         .WithOne()
@@ -150,52 +151,52 @@ namespace TodoTask.Infrastructure.Persistence.Database
                         .WithOne(b => b.Client)
                         .HasForeignKey(b => b.ClientId).OnDelete(DeleteBehavior.Restrict);
 
-            //modelBuilder.Entity<ClientEntity>().HasData(
-            //                new ClientEntity
-            //                {
-            //                    Id = 1,
-            //                    UserId = 2,
-            //                    PersonId = 2,
-            //                }
-            //            );
+            modelBuilder.Entity<ClientEntity>().HasData(
+                            new ClientEntity
+                            {
+                                Id = 1,
+                                UserId = 2,
+                                PersonId = 2,
+                            }
+                        );
         }
         private static void ConfigurePerson(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<PersonEntity>().HasData(
-            //    new PersonEntity
-            //    {
-            //        Id = 1,
-            //        FirstName = "Driver FirstName",
-            //        SecondName = "Driver SecondName",
-            //        LastName = "Driver LastName",
-            //        SecondLastName = "Driver SecondLastName",
-            //        Email = "Driver@gmail.com"
-            //    },
-            //    new PersonEntity
-            //    {
-            //        Id = 2,
-            //        FirstName = "Client FirstName",
-            //        SecondName = "Client SecondName",
-            //        LastName = "Client LastName",
-            //        SecondLastName = "Client SecondLastName",
-            //        Email = "client@gmail.com"
-            //    }
-            //);
+            modelBuilder.Entity<PersonEntity>().HasData(
+                new PersonEntity
+                {
+                    Id = 1,
+                    Firstname = "Driver FirstName",
+                    Secondname = "Driver SecondName",
+                    Lastname = "Driver LastName",
+                    SecondLastname = "Driver SecondLastName",
+                    Email = "Driver@gmail.com"
+                },
+                new PersonEntity
+                {
+                    Id = 2,
+                    Firstname = "Client FirstName",
+                    Secondname = "Client SecondName",
+                    Lastname = "Client LastName",
+                    SecondLastname = "Client SecondLastName",
+                    Email = "client@gmail.com"
+                }
+            );
         }
         private static void ConfigureDevice(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<DeviceEntity>().HasData(
-            //    new DeviceEntity
-            //    {
-            //        Id = 1,
-            //        Name = "Iphone Driver",
-            //    },
-            //    new DeviceEntity
-            //    {
-            //        Id = 2,
-            //        Name = "Iphone Client",
-            //    }
-            //);
+            modelBuilder.Entity<DeviceEntity>().HasData(
+                new DeviceEntity
+                {
+                    Id = 1,
+                    Name = "Iphone Driver",
+                },
+                new DeviceEntity
+                {
+                    Id = 2,
+                    Name = "Iphone Client",
+                }
+            );
         }
         private static void ConfigureRequest(ModelBuilder modelBuilder) 
         {
@@ -243,14 +244,14 @@ namespace TodoTask.Infrastructure.Persistence.Database
                         .WithOne()
                         .HasForeignKey<VehicleEntity>(v => v.DeviceId);
 
-            //modelBuilder.Entity<VehicleEntity>().HasData(
-            //                new VehicleEntity
-            //                {
-            //                    Id = 1,
-            //                    PlateNumber = "12345",
-            //                    DeviceId = 1,
-            //                }
-            //            );
+            modelBuilder.Entity<VehicleEntity>().HasData(
+                            new VehicleEntity
+                            {
+                                Id = 1,
+                                PlateNumber = "12345",
+                                DeviceId = 1,
+                            }
+                        );
         }
         private static void ConfigureUser(ModelBuilder modelBuilder)
         {
@@ -264,24 +265,26 @@ namespace TodoTask.Infrastructure.Persistence.Database
             //            .WithOne()
             //            .HasForeignKey<DriverEntity>(c => c.UserId);
 
-            //modelBuilder.Entity<UserEntity>().HasData(
-            //                new UserEntity
-            //                {
-            //                    Id = 1,
-            //                    Email = "driver@gmail.com",
-            //                    FullName = "User Driver",
-            //                    Blocked = false,
-            //                    Password = "password"
-            //                },
-            //                new UserEntity
-            //                {
-            //                    Id = 2,
-            //                    Email = "user@gmail.com",
-            //                    FullName = "User Driver",
-            //                    Blocked = false,
-            //                    Password = "password"
-            //                }
-            //            );
+            modelBuilder.Entity<UserEntity>().HasData(
+                            new UserEntity
+                            {
+                                Id = 1,
+                                Email = "driver@gmail.com",
+                                Fullname = "User Driver",
+                                Blocked = false,
+                                Password = "$2y$10$IXH.x1KE5WHLLAC4Njsy4.tZjWVXB6L2JwZ5UHuWpLmwEQUO2qIxW",// Prueba
+                                Username = "driver@gmail.com",
+                            },
+                            new UserEntity
+                            {
+                                Id = 2,
+                                Email = "client@gmail.com",
+                                Fullname = "User Client",
+                                Blocked = false,
+                                Password = "$2y$10$IXH.x1KE5WHLLAC4Njsy4.tZjWVXB6L2JwZ5UHuWpLmwEQUO2qIxW",// Prueba
+                                Username = "user@gmail.com",
+                            }
+                        );
         }
 
         public DbSet<PersonEntity>? Persons { get; set; }
@@ -290,7 +293,7 @@ namespace TodoTask.Infrastructure.Persistence.Database
         public DbSet<UserEntity>? Users { get; set; }
         public DbSet<DeviceEntity>? Devices { get; set; }
         public DbSet<RequestEntity>? Requests { get; set; }
-        public DbSet<VehicleEntity>? Vehicules { get; set; }
+        public DbSet<VehicleEntity>? Vehicles { get; set; }
         public DbSet<DriverLocationEntity>? DriverLocations { get; set; }
         public DbSet<ClientLocationEntity>? ClientLocations { get; set; }
         

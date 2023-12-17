@@ -31,7 +31,7 @@ namespace TodoTask.Infrastructure.Services
                 Subject = new ClaimsIdentity(new[]
                 {
                     new Claim("Id", Guid.NewGuid().ToString()),
-                        new Claim(JwtRegisteredClaimNames.Sub, userModel.UserName!),
+                        new Claim(JwtRegisteredClaimNames.Sub, userModel.Username!),
                         new Claim(JwtRegisteredClaimNames.Email, userModel.Email!),
                         new Claim(JwtRegisteredClaimNames.Jti,
                         Guid.NewGuid().ToString())

@@ -17,6 +17,7 @@ namespace TodoTask.Application.Configuration
             // DI
             services.AddScoped<IAssetService, AssetService>();
             services.AddScoped<IRequestService, RequestService>();
+            services.AddScoped<IVehicleService, VehicleService>();
 
             services.AddScoped<IJwtService, JwtService>();
             services.AddScoped<ISecurityService, SecurityService>();

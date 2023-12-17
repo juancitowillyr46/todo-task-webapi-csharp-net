@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TodoTask.Domain.Enums
 {
-    public enum VehiculeTypeEnum
+    public enum VehicleTypeEnum
     {
         AUTO = 1,
         TRUCK = 2,

@@ -17,5 +17,6 @@ namespace TodoTask.Infrastructure.Persistence.Entities
         public string LicenseNumber { get; set; } = string.Empty;
         public List<DriverLocationEntity>? Locations { get; set; } = new List<DriverLocationEntity>();
         public List<RequestEntity>? Requests { get; set; } = new List<RequestEntity>();
+        public VehicleEntity? Vehicle { get; set; }
     }
 }

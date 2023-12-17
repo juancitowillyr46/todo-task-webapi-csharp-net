@@ -13,5 +13,9 @@ namespace TodoTask.Infrastructure.Persistence.Entities
         public int DeviceId {  get; set; }
         public DeviceEntity? Device {  get; set; }
         public string PlateNumber { get; set; } = string.Empty;
+        public bool Availability { get; set; }
+        public VehicleTypeEnum Type { get; set; } = VehicleTypeEnum.AUTO;
+        public int DriverId { get; set; }
+        public DriverEntity? Driver { get; set; }
     }
 }

@@ -28,7 +28,7 @@ namespace TodoTask.Api.Controllers
         [HttpPost("login")]
         public IActionResult PostLogin([FromBody] UserLoginDto userLoginDto)
         {
-            var token = _securityService.PostLogin(userLoginDto.UserName!, userLoginDto.Password!);
+            var token = _securityService.PostLogin(userLoginDto.Username!, userLoginDto.Password!);
             if (token != null)
             {
                 return Ok(new { Token = token });

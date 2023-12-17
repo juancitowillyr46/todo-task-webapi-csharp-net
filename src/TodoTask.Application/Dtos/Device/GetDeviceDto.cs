@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TodoTask.Infrastructure.Persistence.Entities.Base;
 
-namespace TodoTask.Infrastructure.Persistence.Entities
+namespace TodoTask.Application.Dtos.Device
 {
-    public class DeviceEntity : BaseEntity
+    public class GetDeviceDto
     {
         public string? Name { get; set; }
     }

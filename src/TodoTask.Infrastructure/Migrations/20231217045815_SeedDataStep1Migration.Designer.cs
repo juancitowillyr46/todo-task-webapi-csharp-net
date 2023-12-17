@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TodoTask.Infrastructure.Persistence.Database;
 
@@ -11,9 +12,10 @@ using TodoTask.Infrastructure.Persistence.Database;
 namespace TodoTask.Infrastructure.Migrations
 {
     [DbContext(typeof(TodoTaskDbContext))]
-    partial class TodoTaskDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231217045815_SeedDataStep1Migration")]
+    partial class SeedDataStep1Migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,17 +65,6 @@ namespace TodoTask.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Clients");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(5850),
-                            DeletedAt = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(5855),
-                            PersonId = 2,
-                            UpdatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(5855),
-                            UserId = 2
-                        });
                 });
 
             modelBuilder.Entity("TodoTask.Infrastructure.Persistence.Entities.ClientLocationEntity", b =>
@@ -119,19 +110,6 @@ namespace TodoTask.Infrastructure.Migrations
                     b.HasIndex("ClientId");
 
                     b.ToTable("ClientLocations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ClientId = 1,
-                            CreatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(7474),
-                            DeletedAt = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(7475),
-                            Latitude = -1m,
-                            Longitude = -2m,
-                            Timestamp = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(7472),
-                            UpdatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(7474)
-                        });
                 });
 
             modelBuilder.Entity("TodoTask.Infrastructure.Persistence.Entities.DeviceEntity", b =>
@@ -163,7 +141,12 @@ namespace TodoTask.Infrastructure.Migrations
                     b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
 
+                    b.Property<int?>("VehiculeId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("VehiculeId");
 
                     b.ToTable("Devices");
 
@@ -171,18 +154,18 @@ namespace TodoTask.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7633),
-                            DeletedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7634),
+                            CreatedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3715),
+                            DeletedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3718),
                             Name = "Iphone Driver",
-                            UpdatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7633)
+                            UpdatedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3716)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7635),
-                            DeletedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7635),
+                            CreatedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3721),
+                            DeletedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3724),
                             Name = "Iphone Client",
-                            UpdatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7635)
+                            UpdatedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3722)
                         });
                 });
 
@@ -231,18 +214,6 @@ namespace TodoTask.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Drivers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(2316),
-                            DeletedAt = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(2324),
-                            LicenseNumber = "",
-                            PersonId = 1,
-                            UpdatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(2322),
-                            UserId = 1
-                        });
                 });
 
             modelBuilder.Entity("TodoTask.Infrastructure.Persistence.Entities.DriverLocationEntity", b =>
@@ -288,19 +259,6 @@ namespace TodoTask.Infrastructure.Migrations
                     b.HasIndex("DriverId");
 
                     b.ToTable("DriverLocations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(7354),
-                            DeletedAt = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(7355),
-                            DriverId = 1,
-                            Latitude = -1m,
-                            Longitude = -2m,
-                            Timestamp = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(7352),
-                            UpdatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(7354)
-                        });
                 });
 
             modelBuilder.Entity("TodoTask.Infrastructure.Persistence.Entities.PersonEntity", b =>
@@ -333,16 +291,16 @@ namespace TodoTask.Infrastructure.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Firstname")
+                    b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Lastname")
+                    b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SecondLastname")
+                    b.Property<string>("SecondLastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Secondname")
+                    b.Property<string>("SecondName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -359,30 +317,30 @@ namespace TodoTask.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7650),
-                            DeletedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7651),
+                            CreatedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3758),
+                            DeletedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3761),
                             DocumentNumber = "",
                             DocumentType = 0,
                             Email = "Driver@gmail.com",
-                            Firstname = "Driver FirstName",
-                            Lastname = "Driver LastName",
-                            SecondLastname = "Driver SecondLastName",
-                            Secondname = "Driver SecondName",
-                            UpdatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7650)
+                            FirstName = "Driver FirstName",
+                            LastName = "Driver LastName",
+                            SecondLastName = "Driver SecondLastName",
+                            SecondName = "Driver SecondName",
+                            UpdatedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3760)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7653),
-                            DeletedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7654),
+                            CreatedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3767),
+                            DeletedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3770),
                             DocumentNumber = "",
                             DocumentType = 0,
                             Email = "client@gmail.com",
-                            Firstname = "Client FirstName",
-                            Lastname = "Client LastName",
-                            SecondLastname = "Client SecondLastName",
-                            Secondname = "Client SecondName",
-                            UpdatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7653)
+                            FirstName = "Client FirstName",
+                            LastName = "Client LastName",
+                            SecondLastName = "Client SecondLastName",
+                            SecondName = "Client SecondName",
+                            UpdatedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3768)
                         });
                 });
 
@@ -474,7 +432,7 @@ namespace TodoTask.Infrastructure.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Fullname")
+                    b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
@@ -486,7 +444,7 @@ namespace TodoTask.Infrastructure.Migrations
                     b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -498,25 +456,25 @@ namespace TodoTask.Infrastructure.Migrations
                         {
                             Id = 1,
                             Blocked = false,
-                            CreatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7506),
-                            DeletedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7519),
+                            CreatedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3416),
+                            DeletedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3435),
                             Email = "driver@gmail.com",
-                            Fullname = "User Driver",
+                            FullName = "User Driver",
                             Password = "$2y$10$IXH.x1KE5WHLLAC4Njsy4.tZjWVXB6L2JwZ5UHuWpLmwEQUO2qIxW",
-                            UpdatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7515),
-                            Username = "driver@gmail.com"
+                            UpdatedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3430),
+                            UserName = "driver@gmail.com"
                         },
                         new
                         {
                             Id = 2,
                             Blocked = false,
-                            CreatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7521),
-                            DeletedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7522),
+                            CreatedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3443),
+                            DeletedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3446),
                             Email = "client@gmail.com",
-                            Fullname = "User Client",
+                            FullName = "User Client",
                             Password = "$2y$10$IXH.x1KE5WHLLAC4Njsy4.tZjWVXB6L2JwZ5UHuWpLmwEQUO2qIxW",
-                            UpdatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 158, DateTimeKind.Local).AddTicks(7522),
-                            Username = "user@gmail.com"
+                            UpdatedAt = new DateTime(2023, 12, 16, 23, 58, 15, 47, DateTimeKind.Local).AddTicks(3445),
+                            UserName = "user@gmail.com"
                         });
                 });
 
@@ -527,9 +485,6 @@ namespace TodoTask.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool>("Availability")
-                        .HasColumnType("bit");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -546,15 +501,9 @@ namespace TodoTask.Infrastructure.Migrations
                     b.Property<int>("DeviceId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DriverId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PlateNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -567,23 +516,17 @@ namespace TodoTask.Infrastructure.Migrations
                     b.HasIndex("DeviceId")
                         .IsUnique();
 
-                    b.HasIndex("DriverId")
-                        .IsUnique();
-
-                    b.ToTable("Vehicles");
+                    b.ToTable("Vehicules");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Availability = false,
-                            CreatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(6798),
-                            DeletedAt = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(6800),
+                            CreatedAt = new DateTime(2023, 12, 16, 23, 58, 15, 50, DateTimeKind.Local).AddTicks(9395),
+                            DeletedAt = new DateTime(2023, 12, 16, 23, 58, 15, 50, DateTimeKind.Local).AddTicks(9414),
                             DeviceId = 1,
-                            DriverId = 0,
                             PlateNumber = "12345",
-                            Type = 1,
-                            UpdatedAt = new DateTime(2023, 12, 17, 16, 31, 27, 159, DateTimeKind.Local).AddTicks(6799)
+                            UpdatedAt = new DateTime(2023, 12, 16, 23, 58, 15, 50, DateTimeKind.Local).AddTicks(9410)
                         });
                 });
 
@@ -617,6 +560,15 @@ namespace TodoTask.Infrastructure.Migrations
                     b.Navigation("Client");
                 });
 
+            modelBuilder.Entity("TodoTask.Infrastructure.Persistence.Entities.DeviceEntity", b =>
+                {
+                    b.HasOne("TodoTask.Infrastructure.Persistence.Entities.VehicleEntity", "Vehicule")
+                        .WithMany()
+                        .HasForeignKey("VehiculeId");
+
+                    b.Navigation("Vehicule");
+                });
+
             modelBuilder.Entity("TodoTask.Infrastructure.Persistence.Entities.DriverEntity", b =>
                 {
                     b.HasOne("TodoTask.Infrastructure.Persistence.Entities.PersonEntity", "Person")
@@ -641,7 +593,7 @@ namespace TodoTask.Infrastructure.Migrations
                     b.HasOne("TodoTask.Infrastructure.Persistence.Entities.DriverEntity", "Driver")
                         .WithMany("Locations")
                         .HasForeignKey("DriverId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Driver");
@@ -658,7 +610,7 @@ namespace TodoTask.Infrastructure.Migrations
                     b.HasOne("TodoTask.Infrastructure.Persistence.Entities.DriverEntity", "Driver")
                         .WithMany("Requests")
                         .HasForeignKey("DriverId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Client");
 
@@ -673,15 +625,7 @@ namespace TodoTask.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TodoTask.Infrastructure.Persistence.Entities.DriverEntity", "Driver")
-                        .WithOne("Vehicle")
-                        .HasForeignKey("TodoTask.Infrastructure.Persistence.Entities.VehicleEntity", "DriverId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Device");
-
-                    b.Navigation("Driver");
                 });
 
             modelBuilder.Entity("TodoTask.Infrastructure.Persistence.Entities.ClientEntity", b =>
@@ -696,8 +640,6 @@ namespace TodoTask.Infrastructure.Migrations
                     b.Navigation("Locations");
 
                     b.Navigation("Requests");
-
-                    b.Navigation("Vehicle");
                 });
 #pragma warning restore 612, 618
         }

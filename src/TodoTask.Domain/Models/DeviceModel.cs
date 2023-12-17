@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TodoTask.Infrastructure.Persistence.Entities.Base;
+using TodoTask.Domain.Models.Base;
 
-namespace TodoTask.Infrastructure.Persistence.Entities
+namespace TodoTask.Domain.Models
 {
-    public class DeviceEntity : BaseEntity
+    public class DeviceModel : BaseModel
     {
         public string? Name { get; set; }
     }

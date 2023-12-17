@@ -16,7 +16,7 @@ namespace TodoTask.Api.Controllers
         [HttpPost("")]
         public IActionResult PostSecurityLogin([FromBody] UserLoginDto userLoginDto)
         {
-            _userService.GetUserByUsername(userLoginDto.UserName!);
+            _userService.GetUserByUsername(userLoginDto.Username!);
             return Ok();
         }
     }
