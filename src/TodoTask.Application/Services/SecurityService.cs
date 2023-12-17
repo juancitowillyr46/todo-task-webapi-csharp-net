@@ -37,7 +37,7 @@ namespace TodoTask.Application.Services
 
         public UserModel PostRegister(UserModel userModel)
         {
-            if(_userRepository.GetUserByUsername(userModel.Username!) != null)
+            if(_userRepository.GetUserByUsername(userModel.UserName!) != null)
             {
                 throw new NotFoundException("User exist");
             }

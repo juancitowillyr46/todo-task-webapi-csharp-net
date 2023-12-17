@@ -22,9 +22,12 @@ namespace TodoTask.Infrastructure.Adapters
         {
             List<VehicleEntity>? vehicleEntities = _dbContext.Vehicles?
                                                                        .Include(v => v.Device)
-                                                                       .Include(v => v.Driver)
-                                                                       .Where(c => c.Availability == true)
+                                                                       .Include(v => v.Driver!)
+                                                                            .ThenInclude(d => d.Person)
+                                                                       .Where(v => v.Availability == true)
                                                                        .ToList();
+            vehicleEntities = vehicleEntities?.Where(v => v.Driver != null || v.Driver?.Person != null)
+                .ToList();
             var vehicles = _mapper.Map<List<VehicleModel>>(vehicleEntities);
             return vehicles;
         }

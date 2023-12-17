@@ -9,6 +9,7 @@ namespace TodoTask.Domain.Models
 {
     public class DriverModel : BaseModel
     {
+        public PersonModel? Person { get; set; }
         public string LicenseNumber { get; set; } = string.Empty;
     }
 }

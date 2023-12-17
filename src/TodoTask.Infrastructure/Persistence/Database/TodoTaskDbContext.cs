@@ -113,11 +113,11 @@ namespace TodoTask.Infrastructure.Persistence.Database
                         .HasForeignKey(b => b.DriverId)
                         .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<DriverEntity>()
-                        .HasOne(d => d.Vehicle)
-                        .WithOne(v => v.Driver)
-                        .HasForeignKey<VehicleEntity>(v => v.DriverId)
-                        .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<DriverEntity>()
+            //            .HasOne(d => d.Vehicle)
+            //            .WithOne(v => v.Driver)
+            //            .HasForeignKey<VehicleEntity>(v => v.DriverId)
+            //            .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<DriverEntity>().HasData(
                             new DriverEntity
@@ -166,19 +166,19 @@ namespace TodoTask.Infrastructure.Persistence.Database
                 new PersonEntity
                 {
                     Id = 1,
-                    Firstname = "Driver FirstName",
-                    Secondname = "Driver SecondName",
-                    Lastname = "Driver LastName",
-                    SecondLastname = "Driver SecondLastName",
+                    FirstName = "Driver FirstName",
+                    SecondName = "Driver SecondName",
+                    LastName = "Driver LastName",
+                    SecondLastName = "Driver SecondLastName",
                     Email = "Driver@gmail.com"
                 },
                 new PersonEntity
                 {
                     Id = 2,
-                    Firstname = "Client FirstName",
-                    Secondname = "Client SecondName",
-                    Lastname = "Client LastName",
-                    SecondLastname = "Client SecondLastName",
+                    FirstName = "Client FirstName",
+                    SecondName = "Client SecondName",
+                    LastName = "Client LastName",
+                    SecondLastName = "Client SecondLastName",
                     Email = "client@gmail.com"
                 }
             );
@@ -270,19 +270,19 @@ namespace TodoTask.Infrastructure.Persistence.Database
                             {
                                 Id = 1,
                                 Email = "driver@gmail.com",
-                                Fullname = "User Driver",
+                                FullName = "User Driver",
                                 Blocked = false,
                                 Password = "$2y$10$IXH.x1KE5WHLLAC4Njsy4.tZjWVXB6L2JwZ5UHuWpLmwEQUO2qIxW",// Prueba
-                                Username = "driver@gmail.com",
+                                UserName = "driver@gmail.com",
                             },
                             new UserEntity
                             {
                                 Id = 2,
                                 Email = "client@gmail.com",
-                                Fullname = "User Client",
+                                FullName = "User Client",
                                 Blocked = false,
                                 Password = "$2y$10$IXH.x1KE5WHLLAC4Njsy4.tZjWVXB6L2JwZ5UHuWpLmwEQUO2qIxW",// Prueba
-                                Username = "user@gmail.com",
+                                UserName = "user@gmail.com",
                             }
                         );
         }
