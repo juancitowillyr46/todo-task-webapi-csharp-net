@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using TodoTask.Application.Dtos.Request;
+using TodoTask.Domain.Enums;
 using TodoTask.Domain.Models;
 using TodoTask.Domain.Ports.Inbound;
 
@@ -19,11 +21,29 @@ namespace TodoTask.Api.Controllers
         [HttpPost()]
         public GetRequestDto Post(CreateRequestDto createRequestDto)
         {
+            var httpContext = HttpContext;
             RequestModel toModel = _mapper.Map<RequestModel>(createRequestDto);
-            toModel.UserId = 1;
+            if (httpContext.Items.TryGetValue("UserId", out var userId))
+            {
+                toModel.UserId = int.Parse( (string) userId!);
+            }
+            
             RequestModel model = _requestService.CreateRequest(toModel);
             GetRequestDto getRequestDto = _mapper.Map<GetRequestDto>(model);
             return getRequestDto;
+        }
+
+        [HttpPut("{requestId}/assignvehicle")]
+        public IActionResult Assignvehicle(CreateAssignVehicleDto dto)
+        {
+            var httpContext = HttpContext;
+            RequestModel toModel = _mapper.Map<RequestModel>(dto);
+            if (httpContext.Items.TryGetValue("UserId", out var userId))
+            {
+                toModel.UserId = int.Parse((string)userId!);
+            }
+            bool success = _requestService.AssignDriver(dto.RequestId, toModel);
+            return Ok(success);
         }
 
         [HttpPut("{requestId}")]

@@ -7,9 +7,8 @@ using TodoTask.Domain.Models;
 
 namespace TodoTask.Domain.Ports.Inbound
 {
-    public interface IAssetService
+    public interface IDriverService
     {
-        List<AssetModel> FindAssetAvailability();
-        bool UpdateAssetAvailability(int assetId, bool availability);
+        List<DriverModel> DriversAvailable();
     }
 }

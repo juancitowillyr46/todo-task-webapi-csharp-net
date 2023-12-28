@@ -30,11 +30,10 @@ namespace TodoTask.Infrastructure.Services
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim("Id", Guid.NewGuid().ToString()),
+                    new Claim("Id", userModel.Id.ToString()! ),// Guid.NewGuid().ToString()
                         new Claim(JwtRegisteredClaimNames.Sub, userModel.UserName!),
                         new Claim(JwtRegisteredClaimNames.Email, userModel.Email!),
-                        new Claim(JwtRegisteredClaimNames.Jti,
-                        Guid.NewGuid().ToString())
+                        new Claim(JwtRegisteredClaimNames.Jti, userModel.Id.ToString()!)
                     }),
                 Expires = DateTime.UtcNow.AddMinutes(120),
                 Issuer = issuer,

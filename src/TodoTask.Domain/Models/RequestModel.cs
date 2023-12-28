@@ -17,7 +17,7 @@ namespace TodoTask.Domain.Models
         public decimal DestinationLongitude { get; set; }
         public string? DestinationAddress { get; set; }
         public int UserId { get; set; }
-        public int? AssetId { get; set; }
+        public int? DriverId { get; set; }
         public RequestStatusEnum Status { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TodoTask.Application.Dtos.Request;
-using TodoTask.Infrastructure.Persistence.Entities;
+using TodoTask.Infrastructure.Database.Persitence.Entities;
 
 namespace TodoTask.Infrastructure.Mappers
 {

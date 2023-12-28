@@ -4,7 +4,6 @@ using TodoTask.Api.Extensions;
 using TodoTask.Api.Filters;
 using TodoTask.Application.Configuration;
 using TodoTask.Infrastructure.Configuration;
-using TodoTask.Infrastructure.Persistence.Database;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;

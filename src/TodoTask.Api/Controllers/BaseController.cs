@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TodoTask.Domain.Ports.Inbound;
 
 namespace TodoTask.Api.Controllers
 {
@@ -7,6 +9,6 @@ namespace TodoTask.Api.Controllers
     [ApiController]
     public abstract class BaseController : ControllerBase
     {
-
+       
     }
 }

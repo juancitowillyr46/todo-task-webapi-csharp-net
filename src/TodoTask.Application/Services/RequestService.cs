@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TodoTask.Domain.Enums;
 using TodoTask.Domain.Models;
 using TodoTask.Domain.Ports.Inbound;
 using TodoTask.Domain.Ports.Outbound;
@@ -19,9 +20,20 @@ namespace TodoTask.Application.Services
             _requestRepository = requestRepository;
         }
 
+        public bool AssignDriver(int requestId, RequestModel requestModel)
+        {
+            requestModel.UpdatedAt = DateTime.Now;
+            requestModel.UpdatedBy = requestModel.UserId;
+            requestModel.DriverId = requestModel.DriverId;
+            return _requestRepository.AssignDriver(requestId, requestModel);
+        }
+
+
         public RequestModel CreateRequest(RequestModel requestModel)
         {
-            if(_requestRepository.FindAwaitingRequestsByUser(requestModel.UserId))
+            requestModel.Status = RequestStatusEnum.PENDING;
+            requestModel.DriverId = null;
+            if (_requestRepository.FindAwaitingRequestsByUser(requestModel.UserId))
             {
                 throw new NotFoundException("The user has a pending request");
             }
@@ -30,7 +42,6 @@ namespace TodoTask.Application.Services
 
         public bool UpdateRequest(int requestId, RequestModel requestModel)
         {
-            requestModel.AssetId = requestModel.AssetId;
             return _requestRepository.UpdateRequest(requestId, requestModel);
         }
     }

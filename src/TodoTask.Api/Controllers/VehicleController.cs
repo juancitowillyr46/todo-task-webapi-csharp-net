@@ -29,5 +29,12 @@ namespace TodoTask.Api.Controllers
             var GetVehicles = _mapper.Map<List<GetVehicleDto>>(vehiclesModel);
             return Ok(GetVehicles);
         }
+
+        [HttpPut("availability/{vehicleId}")]
+        public IActionResult PutAssetAvailability(int vehicleId, VehicleAvailabilityDto vehicleAvailabilityDto)
+        {
+            bool done = _vehicleService.UpdateVehicleAvailability(vehicleId, vehicleAvailabilityDto.Availability);
+            return Ok(done);
+        }
     }
 }

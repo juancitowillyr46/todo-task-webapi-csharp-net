@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TodoTask.Infrastructure.Persistence.Database;
+using TodoTask.Infrastructure.Database;
 
 namespace TodoTask.Infrastructure.Adapters
 {

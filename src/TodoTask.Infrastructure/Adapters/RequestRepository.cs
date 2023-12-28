@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using TodoTask.Domain.Enums;
 using TodoTask.Domain.Models;
 using TodoTask.Domain.Ports.Outbound;
-using TodoTask.Infrastructure.Persistence.Database;
-using TodoTask.Infrastructure.Persistence.Entities;
+using TodoTask.Infrastructure.Database;
+using TodoTask.Infrastructure.Database.Persitence.Entities;
 
 namespace TodoTask.Infrastructure.Adapters
 {
@@ -23,6 +23,19 @@ namespace TodoTask.Infrastructure.Adapters
             _mapper = mapper;
         }
 
+        public bool AssignDriver(int requestId, RequestModel requestModel)
+        {
+            RequestEntity? requestEntity = _dbContext.Requests?.Find(requestId);
+            if (requestEntity != null)
+            {
+                requestEntity.DriverId = requestModel.DriverId;
+                requestEntity.UpdatedBy = requestModel.UserId;
+                requestEntity.UpdatedAt = DateTime.Now;
+                _dbContext.SaveChanges();
+            }
+            return requestEntity != null;
+        }
+
         public RequestModel CreateRequest(RequestModel requestModel)
         {
             RequestEntity requestEntity = _mapper.Map<RequestEntity>(requestModel);
@@ -33,8 +46,7 @@ namespace TodoTask.Infrastructure.Adapters
 
         public bool FindAwaitingRequestsByUser(int userId)
         {
-            //int? count = _dbContext?.Requests?.Where(c => c.UserId == userId && c.Status == RequestStatusEnum.PENDING).Count();
-            int? count = 0;
+            int? count = _dbContext?.Requests?.Where(c => c.UserId == userId && c.Status == RequestStatusEnum.PENDING).Count();
             return (count > 0);
         }
 

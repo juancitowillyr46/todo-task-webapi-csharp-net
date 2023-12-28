@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TodoTask.Infrastructure.Persistence.Entities.Base;
+using TodoTask.Infrastructure.Database.Persitence.Entities.Base;
 
-namespace TodoTask.Infrastructure.Persistence.Entities
+namespace TodoTask.Infrastructure.Database.Persitence.Entities
 {
     public class ClientEntity : BaseEntity
     {
@@ -14,6 +14,5 @@ namespace TodoTask.Infrastructure.Persistence.Entities
         public int PersonId { get; set; }
         public PersonEntity? Person { get; set; }
         public List<ClientLocationEntity>? Locations { get; set; } = new List<ClientLocationEntity>();
-        public List<RequestEntity>? Requests { get; set; } = new List<RequestEntity>();
     }
 }

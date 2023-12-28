@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TodoTask.Infrastructure.Persistence.Entities.Base
+namespace TodoTask.Infrastructure.Database.Persitence.Entities.Base
 {
     public class BaseEntity : BaseAuditEntity
     {

@@ -15,5 +15,7 @@ namespace TodoTask.Domain.Ports.Outbound
 
         bool FindAwaitingRequestsByUser(int userId);
 
+        bool AssignDriver(int requestId, RequestModel requestModel);
+
     }
 }

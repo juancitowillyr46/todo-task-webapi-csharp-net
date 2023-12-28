@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TodoTask.Domain.Models;
 using TodoTask.Domain.Ports.Outbound;
-using TodoTask.Infrastructure.Persistence.Database;
-using TodoTask.Infrastructure.Persistence.Entities;
+using TodoTask.Infrastructure.Database;
+using TodoTask.Infrastructure.Database.Persitence.Entities;
 
 namespace TodoTask.Infrastructure.Adapters
 {

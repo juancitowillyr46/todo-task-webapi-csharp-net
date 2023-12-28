@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TodoTask.Infrastructure.Persistence.Database;
+using TodoTask.Infrastructure.Database;
+
 
 #nullable disable
 

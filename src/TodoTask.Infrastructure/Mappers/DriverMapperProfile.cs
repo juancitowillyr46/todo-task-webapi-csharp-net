@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TodoTask.Application.Dtos.Device;
 using TodoTask.Application.Dtos.Driver;
 using TodoTask.Domain.Models;
-using TodoTask.Infrastructure.Persistence.Entities;
+using TodoTask.Infrastructure.Database.Persitence.Entities;
 
 namespace TodoTask.Infrastructure.Mappers
 {

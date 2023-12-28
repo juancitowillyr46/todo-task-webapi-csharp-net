@@ -40,7 +40,7 @@ namespace TodoTask.Api.Middlewares
                 if (userIdClaim != null)
                 {
                     // Agrega la información del usuario al contexto para que esté disponible en los controladores
-                    context.Items["UserId"] = userIdClaim;
+                    context.Items["UserId"] = userIdClaim.Value;
                 }
             }
         }

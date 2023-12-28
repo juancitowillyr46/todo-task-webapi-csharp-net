@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TodoTask.Domain.Enums;
-using TodoTask.Infrastructure.Persistence.Entities.Base;
+using TodoTask.Infrastructure.Database.Persitence.Entities.Base;
 
-namespace TodoTask.Infrastructure.Persistence.Entities
+namespace TodoTask.Infrastructure.Database.Persitence.Entities
 {
     public class DriverEntity : BaseEntity
     {
@@ -17,6 +17,6 @@ namespace TodoTask.Infrastructure.Persistence.Entities
         public string LicenseNumber { get; set; } = string.Empty;
         public List<DriverLocationEntity>? Locations { get; set; } = new List<DriverLocationEntity>();
         public List<RequestEntity>? Requests { get; set; } = new List<RequestEntity>();
-        //public VehicleEntity? Vehicle { get; set; }
+        public bool Availability { get; set; }
     }
 }

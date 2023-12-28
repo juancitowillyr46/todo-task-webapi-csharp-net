@@ -5,9 +5,9 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using TodoTask.Domain.Enums;
-using TodoTask.Infrastructure.Persistence.Entities.Base;
+using TodoTask.Infrastructure.Database.Persitence.Entities.Base;
 
-namespace TodoTask.Infrastructure.Persistence.Entities
+namespace TodoTask.Infrastructure.Database.Persitence.Entities
 {
     public class PersonEntity : BaseEntity
     {

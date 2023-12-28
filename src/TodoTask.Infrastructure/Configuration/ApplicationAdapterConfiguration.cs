@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TodoTask.Application.Services;
 using TodoTask.Domain.Ports.Inbound;
+using TodoTask.Domain.Ports.Outbound;
 using TodoTask.Infrastructure.Services;
 
 namespace TodoTask.Application.Configuration
@@ -15,7 +16,7 @@ namespace TodoTask.Application.Configuration
         public static IServiceCollection AddExtensionApplicationAdapters(this IServiceCollection services)
         {
             // DI
-            services.AddScoped<IAssetService, AssetService>();
+            services.AddScoped<IDriverService, DriverService>();
             services.AddScoped<IRequestService, RequestService>();
             services.AddScoped<IVehicleService, VehicleService>();
 

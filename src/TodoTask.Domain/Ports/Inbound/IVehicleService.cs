@@ -10,5 +10,6 @@ namespace TodoTask.Domain.Ports.Inbound
     public interface IVehicleService
     {
         List<VehicleModel> FindVehiclesAvailability();
+        bool UpdateVehicleAvailability(int vehicleId, bool availability);
     }
 }

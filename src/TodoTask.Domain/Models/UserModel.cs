@@ -9,6 +9,7 @@ namespace TodoTask.Domain.Models
 {
     public class UserModel : BaseModel
     {
+        public int? Id { get; set; }
         public string? FirstName { get; set; }
         public string? SecondName { get; set; }
         public string? LastName { get; set; }

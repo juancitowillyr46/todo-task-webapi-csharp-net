@@ -9,7 +9,6 @@ using System.Text;
 using TodoTask.Application.Dtos.User;
 using TodoTask.Domain.Models;
 using TodoTask.Domain.Ports.Inbound;
-using TodoTask.Infrastructure.Persistence.Entities;
 
 namespace TodoTask.Api.Controllers
 {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TodoTask.Application.Dtos.Asset;
 using TodoTask.Application.Dtos.Person;
 using TodoTask.Domain.Models;
-using TodoTask.Infrastructure.Persistence.Entities;
+using TodoTask.Infrastructure.Database.Persitence.Entities;
 
 namespace TodoTask.Infrastructure.Mappers
 {

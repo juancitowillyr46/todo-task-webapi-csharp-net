@@ -7,7 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TodoTask.Domain.Ports.Outbound;
 using TodoTask.Infrastructure.Adapters;
-using TodoTask.Infrastructure.Persistence.Database;
+using TodoTask.Infrastructure.Database;
+
 //using TodoTask.Infrastructure.Persistence.Migrations;
 
 namespace TodoTask.Infrastructure.Configuration
@@ -22,9 +23,9 @@ namespace TodoTask.Infrastructure.Configuration
 
             // Persistence
             services.AddScoped<IVehicleRepository, VehicleRepository>();
-            services.AddScoped<IAssetRepository, AssetRepository>();
             services.AddScoped<IRequestRepository, RequestRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IDriverRepository, DriverRepository>();
             return services;
         }
     }

@@ -9,9 +9,9 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using TodoTask.Domain.Enums;
-using TodoTask.Infrastructure.Persistence.Entities;
+using TodoTask.Infrastructure.Database.Persitence.Entities;
 
-namespace TodoTask.Infrastructure.Persistence.Database
+namespace TodoTask.Infrastructure.Database
 {
     public class TodoTaskDbContext : DbContext
     {
@@ -146,10 +146,10 @@ namespace TodoTask.Infrastructure.Persistence.Database
                         .WithOne(b => b.Client)
                         .HasForeignKey(b => b.ClientId).OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<ClientEntity>()
-                        .HasMany(a => a.Requests)
-                        .WithOne(b => b.Client)
-                        .HasForeignKey(b => b.ClientId).OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<ClientEntity>()
+            //            .HasMany(a => a.Requests)
+            //            .WithOne(b => b.Client)
+            //            .HasForeignKey(b => b.ClientId).OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<ClientEntity>().HasData(
                             new ClientEntity
@@ -198,7 +198,7 @@ namespace TodoTask.Infrastructure.Persistence.Database
                 }
             );
         }
-        private static void ConfigureRequest(ModelBuilder modelBuilder) 
+        private static void ConfigureRequest(ModelBuilder modelBuilder)
         {
 
             modelBuilder.Entity<RequestEntity>()
@@ -265,6 +265,11 @@ namespace TodoTask.Infrastructure.Persistence.Database
             //            .WithOne()
             //            .HasForeignKey<DriverEntity>(c => c.UserId);
 
+            modelBuilder.Entity<UserEntity>()
+                        .HasMany(a => a.Requests)
+                        .WithOne(b => b.User)
+                        .HasForeignKey(b => b.UserId).OnDelete(DeleteBehavior.Restrict);
+
             modelBuilder.Entity<UserEntity>().HasData(
                             new UserEntity
                             {
@@ -296,7 +301,7 @@ namespace TodoTask.Infrastructure.Persistence.Database
         public DbSet<VehicleEntity>? Vehicles { get; set; }
         public DbSet<DriverLocationEntity>? DriverLocations { get; set; }
         public DbSet<ClientLocationEntity>? ClientLocations { get; set; }
-        
+
 
     }
 }

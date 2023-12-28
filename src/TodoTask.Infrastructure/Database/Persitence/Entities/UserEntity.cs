@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TodoTask.Infrastructure.Persistence.Entities.Base;
+using TodoTask.Infrastructure.Database.Persitence.Entities.Base;
 
-namespace TodoTask.Infrastructure.Persistence.Entities
+namespace TodoTask.Infrastructure.Database.Persitence.Entities
 {
     public class UserEntity : BaseEntity
     {
@@ -14,6 +14,6 @@ namespace TodoTask.Infrastructure.Persistence.Entities
         public string? Email { get; set; }
         public string? Password { get; set; }
         public bool Blocked { get; set; }
-
+        public List<RequestEntity>? Requests { get; set; } = new List<RequestEntity>();
     }
 }
