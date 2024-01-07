@@ -19,6 +19,12 @@ namespace TodoTask.Api.Filters
             // Este método se ejecuta después de la acción del controlador
             if (context.Result is ObjectResult objectResult)
             {
+                var messageController = string.Empty;
+                if (context.HttpContext.Items.TryGetValue("ApiResponseMessage", out var message))
+                {
+                    messageController = message!.ToString();
+                }
+                    
                 var originalValue = objectResult.Value;
 
                 // Configuración de nombres de propiedad en minúscula
@@ -32,7 +38,7 @@ namespace TodoTask.Api.Filters
                 var apiResponse = new ApiResponse<Object>
                 {
                     Success = context.ModelState.IsValid,
-                    Message = GetModelStateErrors(context.ModelState),
+                    Message = messageController, //GetModelStateErrors(context.ModelState),
                     Data = originalValue
                 };
 

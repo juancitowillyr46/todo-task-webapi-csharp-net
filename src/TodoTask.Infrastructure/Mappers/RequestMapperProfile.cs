@@ -17,6 +17,7 @@ namespace TodoTask.Infrastructure.Mappers
         public RequestMapperProfile() 
         {
             CreateMap<CreateRequestDto, RequestModel>();
+            CreateMap<UpdateRequestStatusDto, RequestModel>();
             CreateMap<RequestStatusEnum, string>().ConvertUsing(status => status.GetEnumMemberValue());
             CreateMap<GetRequestDto, RequestModel>().ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status));
             CreateMap<RequestModel, RequestEntity>();

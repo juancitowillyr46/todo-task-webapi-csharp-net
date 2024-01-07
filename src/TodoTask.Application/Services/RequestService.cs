@@ -50,5 +50,14 @@ namespace TodoTask.Application.Services
         {
             return _requestRepository.UpdateRequest(requestId, requestModel);
         }
+
+        public bool UpdateRequestStatus(int requestId, RequestModel requestModel)
+        {
+            requestModel.UpdatedAt = DateTime.Now;
+            requestModel.UpdatedBy = requestModel.UserId;
+            requestModel.Status = requestModel.Status;
+            return _requestRepository.UpdateRequestStatus(requestId, requestModel);
+        }
+
     }
 }

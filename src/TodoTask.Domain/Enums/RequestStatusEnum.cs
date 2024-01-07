@@ -12,7 +12,7 @@ namespace TodoTask.Domain.Enums
         [EnumMember(Value = "Pending")]
         PENDING = 0,
 
-        [EnumMember(Value = "Approved")]
+        [EnumMember(Value = "Accepted")]
         ACCEPTED = 1,
 
         [EnumMember(Value = "On Route")]

@@ -42,7 +42,18 @@ namespace TodoTask.Api.Controllers
             {
                 toModel.UserId = int.Parse((string)userId!);
             }
+            HttpContext.Items["ApiResponseMessage"] = "The driver was assigned correctly";
             bool success = _requestService.AssignDriver(dto.RequestId, toModel);
+            return Ok(success);
+        }
+
+        [HttpPut("{requestId}/update-status")]
+        public IActionResult OnRoute(int requestId, [FromBody] UpdateRequestStatusDto updateRequestStatusDto)
+        {
+            RequestModel toModel = _mapper.Map<RequestModel>(updateRequestStatusDto);
+            toModel.UserId = GetUserIdFromHttpContext();
+            bool success = _requestService.UpdateRequestStatus(requestId, toModel);
+            HttpContext.Items["ApiResponseMessage"] = "Status updated successfully";
             return Ok(success);
         }
 
@@ -60,6 +71,18 @@ namespace TodoTask.Api.Controllers
             RequestModel requestModel = _requestService.GetRequest(requestId);
             GetRequestDto getRequestDto = _mapper.Map<GetRequestDto>(requestModel);
             return Ok(getRequestDto);
+        }
+
+        private int GetUserIdFromHttpContext()
+        {
+            var httpContext = HttpContext;
+            if (httpContext.Items.TryGetValue("UserId", out var userIdObj) && userIdObj != null)
+            {
+                return int.Parse((string)userIdObj!);
+            }
+            // En este punto, debes decidir qué valor devolver si no puedes obtener el UserId.
+            // Podrías lanzar una excepción, devolver un valor predeterminado o tomar otra acción según tus necesidades.
+            return -1; // Por ejemplo, devolver -1 si no se puede obtener el UserId.
         }
     }
 }

@@ -31,6 +31,7 @@ namespace TodoTask.Infrastructure.Adapters
                 requestEntity.DriverId = requestModel.DriverId;
                 requestEntity.UpdatedBy = requestModel.UserId;
                 requestEntity.UpdatedAt = DateTime.Now;
+                requestEntity.Status = requestModel.Status;
                 _dbContext.SaveChanges();
             }
             return requestEntity != null;
@@ -61,9 +62,21 @@ namespace TodoTask.Infrastructure.Adapters
             RequestEntity? requestEntity = _dbContext.Requests?.Find(requestId);
             if (requestEntity != null)
             {
-                //requestEntity.AssetId = requestModel.AssetId;
                 requestEntity.UpdatedBy = requestModel.UpdatedBy;
                 requestEntity.UpdatedAt = requestModel.UpdatedAt;
+                _dbContext.SaveChanges();
+            }
+            return requestEntity != null;
+        }
+
+        public bool UpdateRequestStatus(int requestId, RequestModel requestModel)
+        {
+            RequestEntity? requestEntity = _dbContext.Requests?.Find(requestId);
+            if (requestEntity != null)
+            {
+                requestEntity.UpdatedBy = requestModel.UpdatedBy;
+                requestEntity.UpdatedAt = requestModel.UpdatedAt;
+                requestEntity.Status = requestModel.Status;
                 _dbContext.SaveChanges();
             }
             return requestEntity != null;

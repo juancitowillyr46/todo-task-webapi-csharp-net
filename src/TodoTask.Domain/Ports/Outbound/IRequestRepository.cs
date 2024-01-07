@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TodoTask.Domain.Enums;
 using TodoTask.Domain.Models;
 
 namespace TodoTask.Domain.Ports.Outbound
@@ -18,6 +19,8 @@ namespace TodoTask.Domain.Ports.Outbound
         bool AssignDriver(int requestId, RequestModel requestModel);
 
         RequestModel GetRequest(int requestId);
+
+        bool UpdateRequestStatus(int requestId, RequestModel requestModel);
 
     }
 }
