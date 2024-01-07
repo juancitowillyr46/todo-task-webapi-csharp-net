@@ -18,6 +18,6 @@ namespace TodoTask.Domain.Models
         public string? DestinationAddress { get; set; }
         public int UserId { get; set; }
         public int? DriverId { get; set; }
-        public RequestStatusEnum Status { get; set; }
+        public RequestStatusEnum? Status { get; set; } = RequestStatusEnum.PENDING;
     }
 }

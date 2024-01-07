@@ -12,5 +12,6 @@ namespace TodoTask.Domain.Ports.Inbound
         RequestModel CreateRequest(RequestModel requestModel);
         bool UpdateRequest(int requestId, RequestModel requestModel);
         bool AssignDriver(int requestId, RequestModel requestModel);
+        RequestModel GetRequest(int requestId);
     }
 }

@@ -17,5 +17,7 @@ namespace TodoTask.Domain.Ports.Outbound
 
         bool AssignDriver(int requestId, RequestModel requestModel);
 
+        RequestModel GetRequest(int requestId);
+
     }
 }

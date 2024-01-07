@@ -50,6 +50,12 @@ namespace TodoTask.Infrastructure.Adapters
             return (count > 0);
         }
 
+        public RequestModel GetRequest(int requestId)
+        {
+            RequestEntity? requestEntity = _dbContext.Requests?.Find(requestId);
+            return _mapper.Map<RequestModel>(requestEntity);
+        }
+
         public bool UpdateRequest(int requestId, RequestModel requestModel)
         {
             RequestEntity? requestEntity = _dbContext.Requests?.Find(requestId);

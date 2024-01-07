@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TodoTask.Application.Dtos.Request
 {
-    public class CreateAssignVehicleDto
+    public class CreateAssignDriverDto
     {
         public int RequestId { get; set; }
         public int DriverId { get; set; }

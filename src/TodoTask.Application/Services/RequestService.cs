@@ -25,6 +25,7 @@ namespace TodoTask.Application.Services
             requestModel.UpdatedAt = DateTime.Now;
             requestModel.UpdatedBy = requestModel.UserId;
             requestModel.DriverId = requestModel.DriverId;
+            requestModel.Status = RequestStatusEnum.ACCEPTED;
             return _requestRepository.AssignDriver(requestId, requestModel);
         }
 
@@ -38,6 +39,11 @@ namespace TodoTask.Application.Services
                 throw new NotFoundException("The user has a pending request");
             }
             return _requestRepository.CreateRequest(requestModel);
+        }
+
+        public RequestModel GetRequest(int requestId)
+        {
+            return _requestRepository.GetRequest(requestId);
         }
 
         public bool UpdateRequest(int requestId, RequestModel requestModel)

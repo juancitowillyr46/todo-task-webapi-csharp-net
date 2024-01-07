@@ -33,8 +33,8 @@ namespace TodoTask.Api.Controllers
             return getRequestDto;
         }
 
-        [HttpPut("{requestId}/assignvehicle")]
-        public IActionResult Assignvehicle(CreateAssignVehicleDto dto)
+        [HttpPut("{requestId}/assign-driver")]
+        public IActionResult AssignDriver(CreateAssignDriverDto dto)
         {
             var httpContext = HttpContext;
             RequestModel toModel = _mapper.Map<RequestModel>(dto);
@@ -52,6 +52,14 @@ namespace TodoTask.Api.Controllers
             RequestModel toModel = _mapper.Map<RequestModel>(updateRequestDto);
             bool done = _requestService.UpdateRequest(requestId, toModel);
             return done;
+        }
+
+        [HttpGet("{requestId}")]
+        public IActionResult Get(int requestId)
+        {
+            RequestModel requestModel = _requestService.GetRequest(requestId);
+            GetRequestDto getRequestDto = _mapper.Map<GetRequestDto>(requestModel);
+            return Ok(getRequestDto);
         }
     }
 }
