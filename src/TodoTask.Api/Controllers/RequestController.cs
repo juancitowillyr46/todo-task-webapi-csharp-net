@@ -72,17 +72,5 @@ namespace TodoTask.Api.Controllers
             GetRequestDto getRequestDto = _mapper.Map<GetRequestDto>(requestModel);
             return Ok(getRequestDto);
         }
-
-        private int GetUserIdFromHttpContext()
-        {
-            var httpContext = HttpContext;
-            if (httpContext.Items.TryGetValue("UserId", out var userIdObj) && userIdObj != null)
-            {
-                return int.Parse((string)userIdObj!);
-            }
-            // En este punto, debes decidir qué valor devolver si no puedes obtener el UserId.
-            // Podrías lanzar una excepción, devolver un valor predeterminado o tomar otra acción según tus necesidades.
-            return -1; // Por ejemplo, devolver -1 si no se puede obtener el UserId.
-        }
     }
 }
